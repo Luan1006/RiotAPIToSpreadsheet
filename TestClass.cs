@@ -1,4 +1,5 @@
 using Xunit;
+using Luan1006.RiotAPI;
 
 public class TestClass
 {
