@@ -8,7 +8,7 @@ public class ProgramTests
     public void APIKeyIsNotEmpty()
     {
         // Arrange
-        string key = Program.key;
+        string key = Program.Key;
 
         // Act
         bool result = key.Length > 0;

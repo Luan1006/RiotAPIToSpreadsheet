@@ -2,11 +2,17 @@
 {
     class Program
     {
-        public static string key = APIKey.Key; // Enter your API key here (ex. "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-        
+        public static string Key { get; set; } = APIKey.Key;
+
         static void Main(string[] args)
         {
-
+            User user = new User
+            {
+                // Set the game name and tag line
+                // Riot Game ID = gameName#tagLine
+                gameName = "",
+                tagLine = "",
+            };
         }
     }
 }
