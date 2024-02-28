@@ -4,7 +4,7 @@ Riot API To Spreadsheet is a WIP program that will get your recorded stats and p
 
 ## Installation
  
-Download the following packages in terminal
+Download the following packages through terminal
 
 ```bash
 dotnet add package Microsoft.NET.Test.Sdk --version 17.9.0
