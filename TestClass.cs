@@ -44,4 +44,17 @@ public class TestClass
         // Assert
         Assert.Equal("1006", user.tagLine);
     }
+
+    [Fact]
+    public void APIKeyIsNotEmpty()
+    {
+        // Arrange
+        string key = Program.key;
+
+        // Act
+        bool result = key.Length > 0;
+
+        // Assert
+        Assert.True(result);
+    }
 }
