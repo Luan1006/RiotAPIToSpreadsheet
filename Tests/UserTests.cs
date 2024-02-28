@@ -38,4 +38,17 @@ public class UserTests
         // Assert
         Assert.Equal("1006", user.tagLine);
     }
+
+    [Fact]
+    public void UserClassHasPuuidProperty()
+    {
+        // Arrange
+        User user = new User();
+
+        // Act
+        user.puuid = "1234";
+
+        // Assert
+        Assert.Equal("1234", user.puuid);
+    }
 }
