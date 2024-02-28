@@ -1,5 +1,6 @@
 using Xunit;
 using Luan1006.RiotAPI;
+using System.Text.RegularExpressions;
 
 public class ProgramTests
 {
@@ -14,5 +15,19 @@ public class ProgramTests
 
         // Assert
         Assert.True(result);
+    }
+
+    [Fact]
+    public void APIKeyIsValidFormat()
+    {
+        // Arrange
+        string key = APIKey.Key;
+
+        // Act
+        Regex rgx = new Regex(@"^RGAPI-\w{8}-\w{4}-\w{4}-\w{4}-\w{12}$");
+        bool result = rgx.IsMatch(key);
+
+        // Assert
+        Assert.True(result, "API key is not in valid format");
     }
 }

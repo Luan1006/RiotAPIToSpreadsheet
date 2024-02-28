@@ -2,8 +2,8 @@
 {
     class Program
     {
-        public static string key = APIKey.Key;
-
+        public static string key = APIKey.Key; // Enter your API key here (ex. "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+        
         static void Main(string[] args)
         {
 
