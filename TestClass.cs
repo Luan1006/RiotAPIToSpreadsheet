@@ -31,4 +31,17 @@ public class TestClass
         // Assert
         Assert.Equal("Luan", user.gameName);
     }
+
+    [Fact]
+    public void UserClassHasTagLineProperty()
+    {
+        // Arrange
+        User user = new User();
+
+        // Act
+        user.tagLine = "1006";
+
+        // Assert
+        Assert.Equal("1006", user.tagLine);
+    }
 }
