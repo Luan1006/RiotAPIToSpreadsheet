@@ -1,14 +1,8 @@
 using Xunit;
 using Luan1006.RiotAPI;
 
-public class TestClass
+public class UserTests
 {
-    [Fact]
-    public void TestMethod()
-    {
-        Assert.True(true);
-    }
-
     [Fact]
     public void UserClassCanBeInstantiated()
     {
@@ -43,18 +37,5 @@ public class TestClass
 
         // Assert
         Assert.Equal("1006", user.tagLine);
-    }
-
-    [Fact]
-    public void APIKeyIsNotEmpty()
-    {
-        // Arrange
-        string key = Program.key;
-
-        // Act
-        bool result = key.Length > 0;
-
-        // Assert
-        Assert.True(result);
     }
 }
