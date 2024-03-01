@@ -3,7 +3,7 @@ using Luan1006.RiotAPI.Library;
 
 namespace Luan1006.RiotAPI.Library.Tests
 {
-    public class APITests
+    public class AccountV1Tests
     {
         [Fact]
         public void AccountV1ClassCanBeInstantiated()
