@@ -4,11 +4,13 @@ namespace Luan1006.RiotAPI.Library
 {
     public class AccountV1
     {
+        const string accountV1BaseURL = "https://europe.api.riotgames.com/riot/account/v1/";
+        const string accountsByPuuidURL = "accounts/by-puuid/";
         private static readonly HttpClient client = new HttpClient();
 
         public async Task<AccountDto> GetAccountByPuuid(string puuid, string apiKey)
         {
-            string url = HelperMethods.GetApiURL($"https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/{puuid}", apiKey);
+            string url = HelperMethods.CreateApiURL($"{accountV1BaseURL}{accountsByPuuidURL}{puuid}", apiKey);
 
             HttpResponseMessage response = await client.GetAsync(url);
 

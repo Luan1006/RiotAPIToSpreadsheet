@@ -2,7 +2,7 @@ namespace Luan1006.RiotAPI.Library
 {
     public class HelperMethods
     {
-        public static string GetApiURL(string endpoint, string apiKey)
+        public static string CreateApiURL(string endpoint, string apiKey)
         {
             if (endpoint.Contains("?"))
             {

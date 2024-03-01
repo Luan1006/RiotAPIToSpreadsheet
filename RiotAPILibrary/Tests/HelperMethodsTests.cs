@@ -6,7 +6,7 @@ namespace Luan1006.RiotAPI.Library.Tests
     public class HelperMethodsTests
     {
         [Fact]
-        public static void GetApiURL_WithNoQuestionMarkInParameter_ReturnsLinkWithQuestionMark()
+        public static void CreateApiURL_WithNoQuestionMarkInParameter_ReturnsLinkWithQuestionMark()
         {
             // Arrange
             string endpoint = "someEndpoint";
@@ -14,14 +14,14 @@ namespace Luan1006.RiotAPI.Library.Tests
             string expected = "someEndpoint?api_key=someAPIKey";
 
             // Act
-            string actual = GetApiURL(endpoint, apiKey);
+            string actual = CreateApiURL(endpoint, apiKey);
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public static void GetApiURL_WithQuestionMarkInParamter_ReturnsLinkWithAmpersand()
+        public static void CreateApiURL_WithQuestionMarkInParamter_ReturnsLinkWithAmpersand()
         {
             // Arrange
             string endpoint = "someEndpoint?someQuery";
@@ -29,7 +29,7 @@ namespace Luan1006.RiotAPI.Library.Tests
             string expected = "someEndpoint?someQuery&api_key=someAPIKey";
 
             // Act
-            string actual = GetApiURL(endpoint, apiKey);
+            string actual = CreateApiURL(endpoint, apiKey);
 
             // Assert
             Assert.Equal(expected, actual);
