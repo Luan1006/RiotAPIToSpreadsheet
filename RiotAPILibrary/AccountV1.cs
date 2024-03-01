@@ -8,23 +8,23 @@ namespace Luan1006.RiotAPI.Library
         const string accountsByPuuidURL = "accounts/by-puuid/";
         private static readonly HttpClient client = new HttpClient();
 
-public async Task<AccountDto> GetAccountByPuuid(string puuid, string apiKey)
-{
-    string url = HelperMethods.CreateApiURL($"{accountV1BaseURL}{accountsByPuuidURL}{puuid}", apiKey);
+        public async Task<AccountDto> GetAccountByPuuid(string puuid, string apiKey)
+        {
+            string url = HelperMethods.CreateApiURL($"{accountV1BaseURL}{accountsByPuuidURL}{puuid}", apiKey);
 
-    HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await client.GetAsync(url);
 
-    if (response.IsSuccessStatusCode)
-    {
-        string responseBody = await response.Content.ReadAsStringAsync();
-        AccountDto account = JsonSerializer.Deserialize<AccountDto>(responseBody);
-        return account;
-    }
-    else
-    {
-        string errorBody = await response.Content.ReadAsStringAsync();
-        throw new HttpRequestException($"Request to {url} failed with status code {response.StatusCode}. Response body: {errorBody}");
-    }
-}
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = await response.Content.ReadAsStringAsync();
+                AccountDto account = JsonSerializer.Deserialize<AccountDto>(responseBody);
+                return account;
+            }
+            else
+            {
+                string errorBody = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"Request to {url} failed with status code {response.StatusCode}. Response body: {errorBody}");
+            }
+        }
     }
 }
