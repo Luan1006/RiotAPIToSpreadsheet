@@ -13,7 +13,7 @@ namespace Luan1006.RiotAPI.Library.Tests
         public async Task GetAccountByPuuid_ReturnsAccountDto_WhenResponseIsSuccess()
         {
             // Arrange
-            var mockHttpMessageHandler = new Mock<HttpMessageHandler>();
+            Mock<HttpMessageHandler> mockHttpMessageHandler = new Mock<HttpMessageHandler>();
             mockHttpMessageHandler
                 .Protected()
                 .Setup<Task<HttpResponseMessage>>(
@@ -27,8 +27,8 @@ namespace Luan1006.RiotAPI.Library.Tests
                     Content = new StringContent("{\"puuid\": \"testPuuid\", \"gameName\": \"testGameName\", \"tagLine\": \"testTagLine\"}", Encoding.UTF8, "application/json"),
                 });
 
-            var client = new HttpClient(mockHttpMessageHandler.Object);
-            var accountV1 = new AccountV1(client);
+            HttpClient client = new HttpClient(mockHttpMessageHandler.Object);
+            AccountV1 accountV1 = new AccountV1(client);
             string testPuuid = "testPuuid";
             string testApiKey = "testApiKey";
 
@@ -40,6 +40,34 @@ namespace Luan1006.RiotAPI.Library.Tests
             Assert.Equal(testPuuid, result.puuid);
             Assert.Equal("testGameName", result.gameName);
             Assert.Equal("testTagLine", result.tagLine);
+        }
+
+        [Fact]
+        public async Task GetAccountByRiotID_WhenResponseIsSuccess()
+        {
+            // Arrange
+            Mock<HttpMessageHandler> mockHttpMessageHandler = new Mock<HttpMessageHandler>();
+            mockHttpMessageHandler
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(new HttpResponseMessage()
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new StringContent("{\"puuid\": \"testPuuid\", \"gameName\": \"testGameName\", \"tagLine\": \"testTagLine\"}", Encoding.UTF8, "application/json"),
+                });
+
+            HttpClient client = new HttpClient(mockHttpMessageHandler.Object);
+            AccountV1 accountV1 = new AccountV1(client);
+            string testGameName = "testGameName";
+            string testTagLine = "testTagLine";
+            string testApiKey = "testApiKey";
+
+            // Act
+            AccountDto result = await accountV1.GetAccountByRiotID(testGameName, testTagLine, testApiKey);
         }
     }
 }

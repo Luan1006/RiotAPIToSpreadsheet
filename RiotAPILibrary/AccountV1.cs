@@ -12,9 +12,9 @@ namespace Luan1006.RiotAPI.Library
             _client = client;
         }
 
-        public async Task<AccountDto> GetAccountByPuuid(string puuid, string apiKey)
+        public async Task<AccountDto> GetAccountByPuuid(AccountDto accountInfo)
         {
-            string url = HelperMethods.CreateApiURL($"{accountV1BaseURL}{accountsByPuuidURL}{puuid}", apiKey);
+            string url = HelperMethods.CreateApiURL($"{accountV1BaseURL}{accountsByPuuidURL}{AccountDto.puuid}", Program.Key);
 
             HttpResponseMessage response = await _client.GetAsync(url);
 
@@ -30,5 +30,11 @@ namespace Luan1006.RiotAPI.Library
                 throw new HttpRequestException($"Request to {url} failed with status code {response.StatusCode}. Response body: {errorBody}");
             }
         }
+
+        public async Task<AccountDto> GetAccountByRiotID()
+        {
+            return account;
+        }
+
     }
 }
